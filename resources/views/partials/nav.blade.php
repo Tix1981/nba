@@ -1,11 +1,15 @@
 <div class="blog-masthead">
   <div class="container">
-    <nav class="nav">
-      <a class="nav-link active" href="#">Home</a>
-      <a class="nav-link" href="#">New features</a>
-      <a class="nav-link" href="#">Press</a>
-      <a class="nav-link" href="#">New hires</a>
-      <a class="nav-link" href="#">About</a>
+    <nav class="nav d-flex justify-content-end">
+
+      @if (Auth::check())
+		<a class="nav-link" href='#'>{{ Auth()->user()->name }}</a>
+        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+      @else
+        <a class="nav-link" href="{{ route('login') }}">Login</a>
+        <a class="nav-link" href="{{ route('register') }}">Register</a>
+      @endif
+
     </nav>
   </div>
 </div>
