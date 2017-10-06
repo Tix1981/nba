@@ -13,6 +13,7 @@
 
 Route::get('/', ['as' => 'homepage', 'uses' => 'TeamsController@index']);
 Route::get('/teams/{id}', ['as' => 'single-team', 'uses' => 'TeamsController@show']);
+Route::post('/teams/{team_id}/comments', ['as' => 'team-comments', 'uses' => 'CommentsController@store']);
 
 Route::get('/players/{id}', ['as' => 'single-player', 'uses' => 'PlayersController@show']);
 
