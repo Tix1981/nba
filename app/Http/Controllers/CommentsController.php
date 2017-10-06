@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('forbidden-comment')->only('store');
+    }
+
     public function store (Request $request, $team_id) {
 
         $request->validate(
