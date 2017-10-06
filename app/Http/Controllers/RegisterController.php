@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserVerification;
 
 class RegisterController extends Controller
 {
@@ -32,10 +34,13 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'is_verified' => false,
         ]);
 
-        return redirect()->route('homepage');
+        Mail::to($request->email)->send(new UserVerification($user));
+
+        return redirect()->route('login');
 
     }
 }

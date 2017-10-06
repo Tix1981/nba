@@ -3,7 +3,7 @@
     <nav class="nav d-flex justify-content-end">
 
       @if (Auth::check())
-		<a class="nav-link" href='#'>{{ Auth()->user()->name }}</a>
+		<a class="nav-link" href='#'>{{ auth()->user()->name }}</a>
         <a class="nav-link" href="{{ route('logout') }}">Logout</a>
       @else
         <a class="nav-link" href="{{ route('login') }}">Login</a>
